@@ -1,3 +1,60 @@
-body {
-  background-color: wheat;
+html,
+body,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+#mainHead {
+  font-size: 58px;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid;
+}
+
+#time {
+  font-family: "Work Sans", sans-serif;
+  text-align: center;
+  font-size: 24px;
+  background-color: white;
+  padding: 15px 40px;
+  width: 220px;
+  margin: 10px;
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.greyBack {
+  background-color: #e5e5e5;
+  text-align: center;
+  border: 1px solid;
+  width: 100%;
+}
+
+footer {
+  background-color: #e5e5e5;
+}
+
+div.card {
+  background-color: violet;
+  height: 80px;
+  width: 50px;
+  padding: 10px;
+}
+
+#n1 {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
+  margin: 20px;
 }
