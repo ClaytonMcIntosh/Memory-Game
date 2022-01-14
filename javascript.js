@@ -1,9 +1,8 @@
-let card1 = document.createElement("div");
-card1.setAttribute("class","card");
-card1.setAttribute("id","n1");
-let textNode = document.createTextNode("1");
-card1.appendChild(textNode);
-let con = document.querySelector("#game");
-con.appendChild(card1);
+let gameBoard = document.querySelector("#game");
 
-
+for (let i = 0; i < 12; i++) {
+  let card = document.createElement("div");
+  card.id = `card${i}`;
+  card.setAttribute("class", "card");
+  gameBoard.appendChild(card);
+}
