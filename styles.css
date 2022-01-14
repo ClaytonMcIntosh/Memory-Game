@@ -1,3 +1,15 @@
+:root {
+  --colGreen: #65ac70;
+  --colYellow: #f9ee75;
+  --colBlue: #5ab0c7;
+  --colRed: #ee5f5d;
+  --colPurple: #88579d;
+  --colOrange: #efb323;
+  --colBlack: #161616;
+  --colGrey: #e5e5e5;
+  --colDarkGrey: #6a6a6a;
+}
+
 html,
 body,
 h1 {
@@ -45,15 +57,34 @@ footer {
   background-color: #e5e5e5;
 }
 
+#game {
+  display: flex;
+  border: 1px solid;
+  width: 300px;
+  margin: 15px auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 div.card {
-  background-color: violet;
-  height: 80px;
-  width: 50px;
+  background-color: #6a6a6a;
+  height: 65px;
+  width: 55px;
   padding: 10px;
   font-family: "Montserrat", sans-serif;
   text-align: center;
   font-size: 40px;
-  margin: 20px;
+  margin: 5px;
   border-radius: 10px;
   display: inline-block;
+}
+
+#bottomScreen {
+  height: 100px;
+}
+
+@media screen and (min-width: 600px) {
+  #game {
+    width: 500px;
+  }
 }
