@@ -29,39 +29,62 @@ function addCards() {
 function chooseColor() {
   let rand = Math.floor(Math.random() * 6) + 1;
   console.log(rand);
-  if (rand == 1 && deck.green > 0) {
+  if ((rand == 1 && deck.green == 1) || (rand == 1 && deck.green == 2)) {
     deck.green--;
     x = "green";
     console.log("green=" + deck.green);
     return x;
-  } else if (rand == 2 && deck.yellow > 0) {
+  } else if (
+    (rand == 2 && deck.yellow == 1) ||
+    (rand == 2 && deck.yellow == 2)
+  ) {
     deck.yellow--;
     x = "yellow";
     console.log("yellow=" + deck.yellow);
     return x;
-  } else if (rand == 3 && deck.blue > 0) {
+  } else if ((rand == 3 && deck.blue == 1) || (rand == 3 && deck.blue == 2)) {
     deck.blue--;
     x = "blue";
     console.log("blue=" + deck.blue);
     return x;
-  } else if (rand == 4 && deck.red > 0) {
+  } else if ((rand == 4 && deck.red == 1) || (rand == 4 && deck.red == 2)) {
     deck.red--;
     x = "red";
     console.log("red=" + deck.red);
     return x;
-  } else if (rand == 5 && deck.purple > 0) {
+  } else if (
+    (rand == 5 && deck.purple == 1) ||
+    (rand == 5 && deck.purple == 2)
+  ) {
     deck.purple--;
     x = "purple";
     console.log("purple=" + deck.purple);
     return x;
-  } else if (rand == 6 && deck.orange > 0) {
+  } else if (
+    (rand == 6 && deck.orange == 1) ||
+    (rand == 6 && deck.orange == 2)
+  ) {
     deck.orange--;
     x = "orange";
     console.log("orange=" + deck.orange);
     return x;
-  } else {
-    x = "card";
-    console.log("goal!");
+  } else if (deck.green == 1 || deck.green == 2) {
+    x = "green";
+    return x;
+  } else if (deck.yellow == 1 || deck.yellow == 2) {
+    x = "yellow";
+    return x;
+  } else if (deck.blue == 1 || deck.blue == 2) {
+    x = "blue";
+    return x;
+  } else if (deck.red == 1 || deck.red == 2) {
+    x = "red";
+    return x;
+  } else if (deck.purple == 1 || deck.purple == 2) {
+    x = "purple";
+    return x;
+  } else if (deck.orange == 1 || deck.orange == 2) {
+    x = "orange";
     return x;
   }
 }
