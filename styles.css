@@ -66,7 +66,13 @@ footer {
   flex-wrap: wrap;
 }
 
-div.card {
+div.card,
+div.green,
+div.yellow,
+div.blue,
+div.red,
+div.purple,
+div.orange {
   background-color: #6a6a6a;
   height: 65px;
   width: 55px;
@@ -78,6 +84,34 @@ div.card {
   border-radius: 10px;
   display: inline-block;
 }
+
+div.green {
+  background-color: var(--colGreen);
+}
+
+div.yellow {
+  background-color: var(--colYellow);
+}
+
+div.blue {
+  background-color: var(--colBlue);
+}
+
+div.red {
+  background-color: var(--colRed);
+}
+
+div.purple {
+  background-color: var(--colPurple);
+}
+
+div.orange {
+  background-color: var(--colOrange);
+}
+
+/* div#cardred {
+  background-color: red;
+} */
 
 #bottomScreen {
   height: 100px;
