@@ -49,65 +49,19 @@ function dealCards() {
     card.id = `card${i}`;
     card.className = `${cardDeck[i].color}`;
     gameBoard.appendChild(card);
-    let cover = document.createElement("div");
+    var cover = document.createElement("div");
     cover.id = `cover${i}`;
     cover.className = "grey";
     cover.style.opacity = 1;
+    cover.addEventListener("click", flipCardBack);
     card.appendChild(cover);
   }
 }
 
-document.getElementById("cover0").addEventListener("click", function () {
-  flipCardBack(cover0);
-});
-
-document.getElementById("cover1").addEventListener("click", function () {
-  flipCardBack(cover1);
-});
-
-document.getElementById("cover2").addEventListener("click", function () {
-  flipCardBack(cover2);
-});
-
-document.getElementById("cover3").addEventListener("click", function () {
-  flipCardBack(cover3);
-});
-
-document.getElementById("cover4").addEventListener("click", function () {
-  flipCardBack(cover4);
-});
-
-document.getElementById("cover5").addEventListener("click", function () {
-  flipCardBack(cover5);
-});
-
-document.getElementById("cover6").addEventListener("click", function () {
-  flipCardBack(cover6);
-});
-
-document.getElementById("cover7").addEventListener("click", function () {
-  flipCardBack(cover7);
-});
-
-document.getElementById("cover8").addEventListener("click", function () {
-  flipCardBack(cover8);
-});
-
-document.getElementById("cover9").addEventListener("click", function () {
-  flipCardBack(cover9);
-});
-
-document.getElementById("cover10").addEventListener("click", function () {
-  flipCardBack(cover10);
-});
-
-document.getElementById("cover11").addEventListener("click", function () {
-  flipCardBack(cover11);
-});
-
-function flipCardBack(i) {
-  i.style.opacity = "0";
+function flipCardBack() {
+  var thisVar = this;
+  thisVar.style.opacity = "0";
   setInterval(function () {
-    i.style.opacity = "1";
+    thisVar.style.opacity = "1";
   }, 2000);
 }
