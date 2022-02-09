@@ -58,85 +58,56 @@ function dealCards() {
 }
 
 document.getElementById("cover0").addEventListener("click", function () {
-  cover0.style.opacity = "0";
-  setInterval(function () {
-    cover0.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover0);
 });
 
 document.getElementById("cover1").addEventListener("click", function () {
-  cover1.style.opacity = "0";
-  setInterval(function () {
-    cover1.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover1);
 });
 
 document.getElementById("cover2").addEventListener("click", function () {
-  cover2.style.opacity = "0";
-  setInterval(function () {
-    cover2.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover2);
 });
 
 document.getElementById("cover3").addEventListener("click", function () {
-  cover3.style.opacity = "0";
-  setInterval(function () {
-    cover3.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover3);
 });
 
 document.getElementById("cover4").addEventListener("click", function () {
-  cover4.style.opacity = "0";
-  setInterval(function () {
-    cover4.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover4);
 });
 
 document.getElementById("cover5").addEventListener("click", function () {
-  cover5.style.opacity = "0";
-  setInterval(function () {
-    cover5.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover5);
 });
 
 document.getElementById("cover6").addEventListener("click", function () {
-  cover6.style.opacity = "0";
-  setInterval(function () {
-    cover6.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover6);
 });
 
 document.getElementById("cover7").addEventListener("click", function () {
-  cover7.style.opacity = "0";
-  setInterval(function () {
-    cover7.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover7);
 });
 
 document.getElementById("cover8").addEventListener("click", function () {
-  cover8.style.opacity = "0";
-  setInterval(function () {
-    cover8.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover8);
 });
 
 document.getElementById("cover9").addEventListener("click", function () {
-  cover9.style.opacity = "0";
-  setInterval(function () {
-    cover9.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover9);
 });
 
 document.getElementById("cover10").addEventListener("click", function () {
-  cover10.style.opacity = "0";
-  setInterval(function () {
-    cover10.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover10);
 });
 
 document.getElementById("cover11").addEventListener("click", function () {
-  cover11.style.opacity = "0";
-  setInterval(function () {
-    cover11.style.opacity = "1";
-  }, 2000);
+  flipCardBack(cover11);
 });
+
+function flipCardBack(i) {
+  i.style.opacity = "0";
+  setInterval(function () {
+    i.style.opacity = "1";
+  }, 2000);
+}
