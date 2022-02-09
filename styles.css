@@ -49,8 +49,7 @@ h6 {
 .greyBack {
   background-color: #e5e5e5;
   text-align: center;
-  border: 1px solid;
-  width: 100%;
+  
 }
 
 footer {
@@ -65,14 +64,13 @@ footer {
   flex-wrap: wrap;
   }
 
-div.card,
-div.green,
-div.yellow,
-div.blue,
-div.red,
-div.purple,
-div.orange  {
-  /* background-color: #6a6a6a; */
+.grey,
+.green,
+.yellow,
+.blue,
+.red,
+.purple,
+.orange  {
   height: 65px;
   width: 55px;
   padding: 10px;
@@ -84,17 +82,14 @@ div.orange  {
   display: inline-block;
 }
 
+.grey {
+  background-color: var(--colDarkGrey);
+  padding: -5px;
+  margin: -10px;
+}
+
 .green {
   background-color: var(--colGreen);
-  height: 65px;
-  width: 55px;
-  padding: 10px;
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  font-size: 40px;
-  margin: 5px;
-  border-radius: 10px;
-  display: inline-block;
 }
 
 .yellow {
