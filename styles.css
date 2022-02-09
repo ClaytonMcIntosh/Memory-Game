@@ -60,11 +60,10 @@ footer {
 #game {
   display: flex;
   border: 1px solid;
-  width: 300px;
   margin: 15px auto;
   justify-content: center;
   flex-wrap: wrap;
-}
+  }
 
 div.card,
 div.green,
@@ -72,8 +71,8 @@ div.yellow,
 div.blue,
 div.red,
 div.purple,
-div.orange {
-  background-color: #6a6a6a;
+div.orange  {
+  /* background-color: #6a6a6a; */
   height: 65px;
   width: 55px;
   padding: 10px;
@@ -85,36 +84,45 @@ div.orange {
   display: inline-block;
 }
 
-div.green {
+.green {
   background-color: var(--colGreen);
+  height: 65px;
+  width: 55px;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 40px;
+  margin: 5px;
+  border-radius: 10px;
+  display: inline-block;
 }
 
-div.yellow {
+.yellow {
   background-color: var(--colYellow);
 }
 
-div.blue {
+.blue {
   background-color: var(--colBlue);
 }
 
-div.red {
+.red {
   background-color: var(--colRed);
 }
 
-div.purple {
+.purple {
   background-color: var(--colPurple);
 }
 
-div.orange {
+.orange {
   background-color: var(--colOrange);
 }
 
-#bottomScreen {
+.bottomScreen {
   height: 100px;
 }
 
 @media screen and (min-width: 600px) {
   #game {
-    width: 500px;
+    width: 300px;
   }
 }
