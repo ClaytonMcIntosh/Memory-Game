@@ -62,8 +62,6 @@ function dealCards() {
   }
 }
 
-console.log();
-
 function addCoverCard(card, i) {
   var cover = document.createElement("div");
   cover.id = `cover${i}`;
@@ -174,6 +172,7 @@ function checkTurnNumber() {
 }
 
 function flipCardBack(passedThis) {
+  console.log(passedThis);
   passedThis.style.opacity = "0";
   setTimeout(function () {
     for (let i = 0; i < 12; i++) {
@@ -198,6 +197,17 @@ function removeCards() {
   coverArray[secondCardSelected].style.backgroundColor = "white";
   if (cardsWon === 6) {
     console.log("Game won!");
+    clearBoard();
+  }
+}
+
+function clearBoard() {
+  // cardArray.style.display = "none";
+  for (i = 0; i < 12; i++) {
+    console.log(i);
+    coverArray[i].style.display = "none";
+    cardArray[i].style.display = "none";
+    document.getElementById("gameWon").style.display = "block";
   }
 }
 

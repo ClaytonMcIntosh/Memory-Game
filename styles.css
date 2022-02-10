@@ -64,6 +64,11 @@ footer {
   flex-wrap: wrap;
    }
 
+#gameWon {
+  text-align: center;
+  display: none;
+}
+
 .grey,
 .green,
 .yellow,
