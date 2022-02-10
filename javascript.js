@@ -3,6 +3,8 @@ var cardTurnNumber = false;
 var firstCard;
 var firstCardSelected;
 var secondCardSelected;
+var coverArray = [];
+var cardArray = [];
 const cardDeck = [
   {
     color: "green",
@@ -55,8 +57,11 @@ function dealCards() {
     card.className = `${cardDeck[i].color}`;
     gameBoard.appendChild(card);
     addCoverCard(card, i);
+    cardArray.push(card);
   }
 }
+
+console.log();
 
 function addCoverCard(card, i) {
   var cover = document.createElement("div");
@@ -65,10 +70,12 @@ function addCoverCard(card, i) {
   cover.style.opacity = 1;
   cover.addEventListener("click", checkTurnNumber);
   card.appendChild(cover);
+  coverArray.push(cover);
 }
 
 function checkTurnNumber() {
   if (cardTurnNumber === false) {
+
     switch (this.id) {
       case "cover0":
         firstCardSelected = 0;
@@ -184,11 +191,10 @@ function flashBackground() {
   }, 1000);
 }
 
-//make the correct card to have class "removed cards"
-
 function removeCards() {
-  console.log("a");
-  cover1.style.backgroundColor = "black";
+  console.log(firstCardSelected + " and " + secondCardSelected);
+  coverArray[firstCardSelected].style.backgroundColor = "white";
+  coverArray[secondCardSelected].style.backgroundColor = "white";
 }
 
 init();
