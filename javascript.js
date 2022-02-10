@@ -1,5 +1,6 @@
 let gameBoard = document.querySelector("#game");
 var cardTurnNumber = false;
+var firstCard;
 const cardDeck = [
   {
     color: "green",
@@ -65,27 +66,34 @@ function addCoverCard(card, i) {
 }
 
 function checkTurnNumber() {
-  console.log(cardTurnNumber);
   if (cardTurnNumber === false) {
     cardTurnNumber = true;
     this.style.opacity = "0";
-  } else flipCardBack(this);
-  //when you click on the first card, it stays up
-  //when you click on the second card it checks if its the same as the first card
-  //if cards are same, they go to bottom
-  //if cards are not the same, they turn back
+  } else {
+    flipCardBack(this);
+    console.log("CTN end " + cardTurnNumber);
+    
+  }
 }
-
-// function checkIfMatch() {
-
-// }
 
 function flipCardBack(passedThis) {
-  console.log("hi");
-  let passedThisVar = passedThis;
-  passedThisVar.style.opacity = "0";
-  setInterval(function () {
-    passedThisVar.style.opacity = "1";
+  passedThis.style.opacity = "0";
+  setTimeout(function () {
+    cover0.style.opacity = "1";
+    cover1.style.opacity = "1";
+    cover2.style.opacity = "1";
+    cover3.style.opacity = "1";
+    cover4.style.opacity = "1";
+    cover5.style.opacity = "1";
+    cover6.style.opacity = "1";
+    cover7.style.opacity = "1";
+    cover8.style.opacity = "1";
+    cover9.style.opacity = "1";
+    cover10.style.opacity = "1";
+    cover11.style.opacity = "1";
+    cardTurnNumber = false;
+    console.log("END " + cardTurnNumber);
   }, 2000);
 }
+
 init();
