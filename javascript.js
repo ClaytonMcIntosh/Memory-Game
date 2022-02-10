@@ -5,6 +5,7 @@ var firstCardSelected;
 var secondCardSelected;
 var coverArray = [];
 var cardArray = [];
+let cardsWon = 0;
 const cardDeck = [
   {
     color: "green",
@@ -75,7 +76,6 @@ function addCoverCard(card, i) {
 
 function checkTurnNumber() {
   if (cardTurnNumber === false) {
-
     switch (this.id) {
       case "cover0":
         firstCardSelected = 0;
@@ -183,7 +183,6 @@ function flipCardBack(passedThis) {
 }
 
 function flashBackground() {
-  console.log("hi");
   document.getElementById("game").style.backgroundColor =
     cardDeck[firstCardSelected].color;
   setTimeout(() => {
@@ -192,9 +191,14 @@ function flashBackground() {
 }
 
 function removeCards() {
+  cardsWon++;
+  console.log(cardsWon);
   console.log(firstCardSelected + " and " + secondCardSelected);
   coverArray[firstCardSelected].style.backgroundColor = "white";
   coverArray[secondCardSelected].style.backgroundColor = "white";
+  if (cardsWon === 6) {
+    console.log("Game won!");
+  }
 }
 
 init();
