@@ -72,7 +72,6 @@ function checkTurnNumber() {
     switch (this.id) {
       case "cover0":
         firstCardSelected = 0;
-        console.log(0);
         break;
       case "cover1":
         firstCardSelected = 1;
@@ -117,7 +116,6 @@ function checkTurnNumber() {
     switch (this.id) {
       case "cover0":
         secondCardSelected = 0;
-        console.log(0);
         break;
       case "cover1":
         secondCardSelected = 1;
@@ -160,6 +158,7 @@ function checkTurnNumber() {
       cardDeck[firstCardSelected].color === cardDeck[secondCardSelected].color
     ) {
       console.log("Match");
+      flashBackground();
     }
     flipCardBack(this);
     cardTurnNumber = false;
@@ -173,6 +172,15 @@ function flipCardBack(passedThis) {
       document.querySelector("#cover" + i).style.opacity = 1;
     }
   }, 2000);
+}
+
+function flashBackground() {
+  console.log("hi");
+  document.getElementById("game").style.backgroundColor =
+    cardDeck[firstCardSelected].color;
+  setTimeout(() => {
+    document.getElementById("game").style.backgroundColor = "white";
+  }, 1000);
 }
 
 init();
