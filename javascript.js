@@ -158,6 +158,7 @@ function checkTurnNumber() {
       cardDeck[firstCardSelected].color === cardDeck[secondCardSelected].color
     ) {
       console.log("Match");
+      removeCards();
       flashBackground();
     }
     flipCardBack(this);
@@ -181,6 +182,13 @@ function flashBackground() {
   setTimeout(() => {
     document.getElementById("game").style.backgroundColor = "white";
   }, 1000);
+}
+
+//make the correct card to have class "removed cards"
+
+function removeCards() {
+  console.log("a");
+  cover1.style.backgroundColor = "black";
 }
 
 init();

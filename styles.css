@@ -112,6 +112,10 @@ footer {
   background-color: var(--colOrange);
 }
 
+.removedCards {
+  background-color: black;
+}
+
 .bottomScreen {
   height: 100px;
 }
