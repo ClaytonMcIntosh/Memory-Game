@@ -6,8 +6,9 @@ var secondCardSelected;
 var coverArray = [];
 var cardArray = [];
 let cardsWon = 0;
-var seconds = 60;
+var seconds = 30;
 var timer;
+let countDown;
 var secondsDisplay = document.getElementById("secondsDisplay");
 const cardDeck = [
   {
@@ -56,15 +57,18 @@ function init() {
 }
 
 function startTimer() {
-  setInterval(timer, 1000)
-};
-  
+  countDown = setInterval(timer, 1000);
+}
+
 function timer() {
   seconds--;
   secondsDisplay.textContent = seconds;
   console.log(seconds);
-};
-
+  if (seconds === 0) {
+    clearInterval(countDown);
+    gameLost();
+  }
+}
 
 function dealCards() {
   for (let i = 0; i <= 11; i++) {
@@ -220,9 +224,11 @@ function gameWon() {
   // cardArray.style.display = "none";
   for (i = 0; i < 12; i++) {
     console.log(i);
+    clearInterval(countDown);
     coverArray[i].style.display = "none";
     cardArray[i].style.display = "none";
     document.getElementById("gameWon").style.display = "block";
+
   }
 }
 
@@ -235,6 +241,5 @@ function gameLost() {
     document.getElementById("gameLost").style.display = "block";
   }
 }
-
 
 init();
