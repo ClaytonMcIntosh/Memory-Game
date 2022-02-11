@@ -64,7 +64,7 @@ footer {
   flex-wrap: wrap;
    }
 
-#gameWon {
+#gameWon, #gameLost {
   text-align: center;
   display: none;
 }

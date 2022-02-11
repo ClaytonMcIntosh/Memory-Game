@@ -6,6 +6,9 @@ var secondCardSelected;
 var coverArray = [];
 var cardArray = [];
 let cardsWon = 0;
+var seconds = 60;
+var timer;
+var secondsDisplay = document.getElementById("secondsDisplay");
 const cardDeck = [
   {
     color: "green",
@@ -49,7 +52,19 @@ let randCard = cardDeck.sort(() => 0.5 - Math.random());
 
 function init() {
   dealCards();
+  startTimer();
 }
+
+function startTimer() {
+  setInterval(timer, 1000)
+};
+  
+function timer() {
+  seconds--;
+  secondsDisplay.textContent = seconds;
+  console.log(seconds);
+};
+
 
 function dealCards() {
   for (let i = 0; i <= 11; i++) {
@@ -197,11 +212,11 @@ function removeCards() {
   coverArray[secondCardSelected].style.backgroundColor = "white";
   if (cardsWon === 6) {
     console.log("Game won!");
-    clearBoard();
+    gameWon();
   }
 }
 
-function clearBoard() {
+function gameWon() {
   // cardArray.style.display = "none";
   for (i = 0; i < 12; i++) {
     console.log(i);
@@ -210,5 +225,16 @@ function clearBoard() {
     document.getElementById("gameWon").style.display = "block";
   }
 }
+
+function gameLost() {
+  // cardArray.style.display = "none";
+  for (i = 0; i < 12; i++) {
+    console.log(i);
+    coverArray[i].style.display = "none";
+    cardArray[i].style.display = "none";
+    document.getElementById("gameLost").style.display = "block";
+  }
+}
+
 
 init();

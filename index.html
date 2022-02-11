@@ -18,13 +18,21 @@
     <header class="greyBack">
       <h1 id="mainHead">Memory</h1>
       <div>
-        <p id="time">Time: 00:00</p>
+        <p id="time">Time: <span id="secondsDisplay">##</span></p>
       </div>
     </header>
 
     <section id="game"></section>
 
-    <section id="gameWon"><p>Game Won!</p></section>
+    <section id="gameWon">
+      <p>Game Won!</p>
+      <button onClick="window.location.reload();">Play again?</button>
+    </section>
+
+    <section id="gameLost">
+      <p>Game Lost!</p>
+      <button onClick="window.location.reload();">Play again?</button>
+    </section>
 
     <section class="greyBack" id="bottomScreen"></section>
 
