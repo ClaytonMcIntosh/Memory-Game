@@ -1,12 +1,15 @@
 let gameBoard = document.querySelector("#game");
+let wonCardsSpace = document.querySelector("#removedcards");
 var cardTurnNumber = false;
 var firstCard;
 var firstCardSelected;
 var secondCardSelected;
 var coverArray = [];
 var cardArray = [];
+var wonCards = [];
+var wonCardsArray = [];
 let cardsWon = 0;
-var seconds = 45;
+var seconds = 10000;
 var timer;
 let countDown;
 var secondsDisplay = document.getElementById("secondsDisplay");
@@ -53,6 +56,7 @@ let randCard = cardDeck.sort(() => 0.5 - Math.random());
 
 function init() {
   dealCards();
+  dealWinningCardsHolder();
   startTimer();
 }
 
@@ -77,6 +81,16 @@ function dealCards() {
     gameBoard.appendChild(card);
     addCoverCard(card, i);
     cardArray.push(card);
+  }
+}
+
+function dealWinningCardsHolder() {
+  for (let i = 0; i <= 5; i++) {
+    let wonCard = document.createElement("div");
+    wonCard.id = `wonCard${i}`;
+    wonCard.className = "removedCards";
+    wonCardsSpace.appendChild(wonCard);
+    wonCardsArray.push(wonCard);
   }
 }
 
@@ -177,11 +191,27 @@ function checkTurnNumber() {
     ) {
       removeCards();
       flashBackground();
+      addToWonCards();
     }
     flipCardBack(this);
-    // returnPointerEvent()
     cardTurnNumber = false;
   }
+}
+
+function addToWonCards(){
+  console.log(cardDeck[firstCardSelected].color)
+wonCards.push(cardDeck[firstCardSelected].color)
+console.log(wonCards)
+
+for (i = 0; i < wonCards.length; i++){
+
+wonCardsArray[i].style.backgroundColor = wonCards[i];
+
+console.log(wonCardsArray)
+
+
+}
+
 }
 
 function flipCardBack(passedThis) {
@@ -194,9 +224,8 @@ function flipCardBack(passedThis) {
       document.querySelector("#cover" + i).style.opacity = 1;
       if (coverArray[i].className === "grey") {
         coverArray[i].style.pointerEvents = "auto";
-      } else if (coverArray[i].style.backgroundColor === "white") {
-        coverArray[i].style.pointerEvents = "none";
-      }
+        console.log("asd");
+      } 
     }
   }, 2000);
 }
@@ -238,20 +267,6 @@ function gameLost() {
     document.getElementById("gameLost").style.display = "block";
   }
 }
-
-
-// function returnPointerEvent(){
-//   for (let i = 0; i < 12; i++) {
-//     if (coverArray[i].style.backgroundColor === "grey") {
-//       console.log("A")
-//       coverArray[i].style.pointerEvents = "auto";
-//       coverArray[i].style.backgroundColor = "blue"
-//     }
-//     else
-//     coverArray[i].style.opacity = "0.3"
-//     coverArray[i].style.pointerEvents = "none";
-//     console.log("B")
-//   }
 
 
 

@@ -49,7 +49,6 @@ h6 {
 .greyBack {
   background-color: #e5e5e5;
   text-align: center;
-  
 }
 
 footer {
@@ -62,9 +61,17 @@ footer {
   margin: 15px auto;
   justify-content: center;
   flex-wrap: wrap;
-   }
+}
 
-#gameWon, #gameLost {
+#removedcards {
+  width:300px;
+  border: 1px solid;
+  margin: 15px auto;
+  text-align: center;
+}
+
+#gameWon,
+#gameLost {
   text-align: center;
   display: none;
 }
@@ -75,7 +82,7 @@ footer {
 .blue,
 .red,
 .purple,
-.orange  {
+.orange {
   height: 65px;
   width: 55px;
   padding: 10px;
@@ -84,6 +91,19 @@ footer {
   font-size: 40px;
   margin: 5px;
   border-radius: 10px;
+  display: inline-block;
+}
+
+
+.removedCards {
+  height: 25px;
+  width: 15px;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 40px;
+  margin: 5px;
+  border-radius: 5px;
   display: inline-block;
 }
 
