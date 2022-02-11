@@ -6,7 +6,7 @@ var secondCardSelected;
 var coverArray = [];
 var cardArray = [];
 let cardsWon = 0;
-var seconds = 30;
+var seconds = 45;
 var timer;
 let countDown;
 var secondsDisplay = document.getElementById("secondsDisplay");
@@ -63,7 +63,6 @@ function startTimer() {
 function timer() {
   seconds--;
   secondsDisplay.textContent = seconds;
-  console.log(seconds);
   if (seconds === 0) {
     clearInterval(countDown);
     gameLost();
@@ -130,12 +129,10 @@ function checkTurnNumber() {
       case "cover11":
         firstCardSelected = 11;
         break;
-      default:
-        console.log("ERR");
-        break;
     }
     cardTurnNumber = true;
     this.style.opacity = "0";
+    this.style.pointerEvents = "none";
   } else {
     switch (this.id) {
       case "cover0":
@@ -174,28 +171,32 @@ function checkTurnNumber() {
       case "cover11":
         secondCardSelected = 11;
         break;
-      default:
-        console.log("ERR");
-        break;
     }
     if (
       cardDeck[firstCardSelected].color === cardDeck[secondCardSelected].color
     ) {
-      console.log("Match");
       removeCards();
       flashBackground();
     }
     flipCardBack(this);
+    // returnPointerEvent()
     cardTurnNumber = false;
   }
 }
 
 function flipCardBack(passedThis) {
-  console.log(passedThis);
   passedThis.style.opacity = "0";
+  for (i = 0; i < 12; i++) {
+    coverArray[i].style.pointerEvents = "none";
+  }
   setTimeout(function () {
     for (let i = 0; i < 12; i++) {
       document.querySelector("#cover" + i).style.opacity = 1;
+      if (coverArray[i].className === "grey") {
+        coverArray[i].style.pointerEvents = "auto";
+      } else if (coverArray[i].style.backgroundColor === "white") {
+        coverArray[i].style.pointerEvents = "none";
+      }
     }
   }, 2000);
 }
@@ -210,12 +211,11 @@ function flashBackground() {
 
 function removeCards() {
   cardsWon++;
-  console.log(cardsWon);
-  console.log(firstCardSelected + " and " + secondCardSelected);
-  coverArray[firstCardSelected].style.backgroundColor = "white";
-  coverArray[secondCardSelected].style.backgroundColor = "white";
+  coverArray[firstCardSelected].style.display = "none";
+  coverArray[firstCardSelected].style.pointerEvents = "none";
+  coverArray[secondCardSelected].style.display = "none";
+  coverArray[secondCardSelected].style.pointerEvents = "none";
   if (cardsWon === 6) {
-    console.log("Game won!");
     gameWon();
   }
 }
@@ -223,23 +223,36 @@ function removeCards() {
 function gameWon() {
   // cardArray.style.display = "none";
   for (i = 0; i < 12; i++) {
-    console.log(i);
     clearInterval(countDown);
     coverArray[i].style.display = "none";
     cardArray[i].style.display = "none";
     document.getElementById("gameWon").style.display = "block";
-
   }
 }
 
 function gameLost() {
   // cardArray.style.display = "none";
   for (i = 0; i < 12; i++) {
-    console.log(i);
     coverArray[i].style.display = "none";
     cardArray[i].style.display = "none";
     document.getElementById("gameLost").style.display = "block";
   }
 }
+
+
+// function returnPointerEvent(){
+//   for (let i = 0; i < 12; i++) {
+//     if (coverArray[i].style.backgroundColor === "grey") {
+//       console.log("A")
+//       coverArray[i].style.pointerEvents = "auto";
+//       coverArray[i].style.backgroundColor = "blue"
+//     }
+//     else
+//     coverArray[i].style.opacity = "0.3"
+//     coverArray[i].style.pointerEvents = "none";
+//     console.log("B")
+//   }
+
+
 
 init();
