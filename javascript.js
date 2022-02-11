@@ -9,46 +9,58 @@ var cardArray = [];
 var wonCards = [];
 var wonCardsArray = [];
 let cardsWon = 0;
-var seconds = 10000;
+var seconds = 30;
 var timer;
 let countDown;
 var secondsDisplay = document.getElementById("secondsDisplay");
 const cardDeck = [
   {
     color: "green",
+    hex: "#65ac70",
   },
   {
     color: "green",
+    hex: "#65ac70",
   },
   {
     color: "yellow",
+    hex: "#f9ee75",
   },
   {
     color: "yellow",
+    hex: "#f9ee75",
   },
   {
     color: "blue",
+    hex: "#5ab0c7",
   },
   {
     color: "blue",
+    hex: "#5ab0c7",
   },
   {
     color: "red",
+    hex: "#ee5f5d",
   },
   {
     color: "red",
+    hex: "#ee5f5d",
   },
   {
     color: "purple",
+    hex: "#88579d",
   },
   {
     color: "purple",
+    hex: "#88579d",
   },
   {
     color: "orange",
+    hex: "#efb323",
   },
   {
     color: "orange",
+    hex: "#efb323",
   },
 ];
 
@@ -198,20 +210,12 @@ function checkTurnNumber() {
   }
 }
 
-function addToWonCards(){
-  console.log(cardDeck[firstCardSelected].color)
-wonCards.push(cardDeck[firstCardSelected].color)
-console.log(wonCards)
+function addToWonCards() {
+  wonCards.push(cardDeck[firstCardSelected].hex);
 
-for (i = 0; i < wonCards.length; i++){
-
-wonCardsArray[i].style.backgroundColor = wonCards[i];
-
-console.log(wonCardsArray)
-
-
-}
-
+  for (i = 0; i < wonCards.length; i++) {
+    wonCardsArray[i].style.backgroundColor = wonCards[i];
+  }
 }
 
 function flipCardBack(passedThis) {
@@ -224,18 +228,17 @@ function flipCardBack(passedThis) {
       document.querySelector("#cover" + i).style.opacity = 1;
       if (coverArray[i].className === "grey") {
         coverArray[i].style.pointerEvents = "auto";
-        console.log("asd");
-      } 
+      }
     }
-  }, 2000);
+  }, 500);
 }
 
 function flashBackground() {
   document.getElementById("game").style.backgroundColor =
-    cardDeck[firstCardSelected].color;
+    cardDeck[firstCardSelected].hex;
   setTimeout(() => {
     document.getElementById("game").style.backgroundColor = "white";
-  }, 1000);
+  }, 600);
 }
 
 function removeCards() {
@@ -250,24 +253,21 @@ function removeCards() {
 }
 
 function gameWon() {
-  // cardArray.style.display = "none";
   for (i = 0; i < 12; i++) {
     clearInterval(countDown);
     coverArray[i].style.display = "none";
     cardArray[i].style.display = "none";
+    
     document.getElementById("gameWon").style.display = "block";
   }
 }
 
 function gameLost() {
-  // cardArray.style.display = "none";
   for (i = 0; i < 12; i++) {
     coverArray[i].style.display = "none";
     cardArray[i].style.display = "none";
     document.getElementById("gameLost").style.display = "block";
   }
 }
-
-
 
 init();
