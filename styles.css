@@ -30,7 +30,6 @@ h6 {
   font-size: 58px;
   text-align: center;
   display: inline-block;
-  border: 1px solid;
 }
 
 #time {
@@ -43,7 +42,6 @@ h6 {
   margin: 10px;
   display: inline-block;
   border-radius: 10px;
-  border: 1px solid;
 }
 
 .greyBack {
@@ -57,15 +55,13 @@ footer {
 
 #game {
   display: flex;
-  border: 1px solid;
   margin: 15px auto;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 #removedcards {
-  width:300px;
-  border: 1px solid;
+  width: 300px;
   margin: 15px auto;
   text-align: center;
 }
@@ -93,7 +89,6 @@ footer {
   border-radius: 10px;
   display: inline-block;
 }
-
 
 .removedCards {
   height: 25px;

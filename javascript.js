@@ -245,8 +245,10 @@ function removeCards() {
   cardsWon++;
   coverArray[firstCardSelected].style.display = "none";
   coverArray[firstCardSelected].style.pointerEvents = "none";
+  cardArray[firstCardSelected].style.opacity = "0";
   coverArray[secondCardSelected].style.display = "none";
   coverArray[secondCardSelected].style.pointerEvents = "none";
+  cardArray[secondCardSelected].style.opacity = "0";
   if (cardsWon === 6) {
     gameWon();
   }
@@ -257,7 +259,7 @@ function gameWon() {
     clearInterval(countDown);
     coverArray[i].style.display = "none";
     cardArray[i].style.display = "none";
-    
+
     document.getElementById("gameWon").style.display = "block";
   }
 }
