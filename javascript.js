@@ -13,6 +13,7 @@ var seconds = 30;
 var timer;
 let countDown;
 var secondsDisplay = document.getElementById("secondsDisplay");
+let banana;
 const cardDeck = [
   {
     color: "green",
@@ -68,7 +69,7 @@ let randCard = cardDeck.sort(() => 0.5 - Math.random());
 
 function init() {
   dealCards();
-  dealWinningCardsHolder();
+  // dealWinningCardsHolder();
   startTimer();
 }
 
@@ -89,12 +90,45 @@ function dealCards() {
   for (let i = 0; i <= 11; i++) {
     let card = document.createElement("div");
     card.id = `card${i}`;
-    card.className = `${cardDeck[i].color}`;
+    card.hex = `${cardDeck[i].color}`
+    card.className = "grey";
     gameBoard.appendChild(card);
-    addCoverCard(card, i);
+    card.addEventListener("click", checkTurnNumber)
+    // addCoverCard(card, i);
     cardArray.push(card);
   }
 }
+
+function checkTurnNumber() {
+  if (cardTurnNumber === false) {
+    firstCardSelected = this.hex
+    console.log(firstCardSelected)
+    banana = this;
+    cardTurnNumber = true;
+    this.style.backgroundColor = this.hex;
+    console.log("Yo")
+    console.log(banana)
+    console.log("Yo")
+    // this.style.pointerEvents = "none";
+  } else {
+    secondCardSelected = this.hex
+    var secondthis = this;
+    console.log("secondThis")
+    console.log(secondthis)
+    console.log("secondThis")
+    if (
+      firstCardSelected === secondCardSelected
+    ) {
+      console.log("match")
+      removeCards(banana, secondthis);
+      // flashBackground();
+      // addToWonCards();
+    }
+    flipCardBack(this);
+    cardTurnNumber = false;
+  }
+}
+
 
 function dealWinningCardsHolder() {
   for (let i = 0; i <= 5; i++) {
@@ -106,109 +140,7 @@ function dealWinningCardsHolder() {
   }
 }
 
-function addCoverCard(card, i) {
-  var cover = document.createElement("div");
-  cover.id = `cover${i}`;
-  cover.className = "grey";
-  cover.style.opacity = 1;
-  cover.addEventListener("click", checkTurnNumber);
-  card.appendChild(cover);
-  coverArray.push(cover);
-}
 
-function checkTurnNumber() {
-  if (cardTurnNumber === false) {
-    switch (this.id) {
-      case "cover0":
-        firstCardSelected = 0;
-        break;
-      case "cover1":
-        firstCardSelected = 1;
-        break;
-      case "cover2":
-        firstCardSelected = 2;
-        break;
-      case "cover3":
-        firstCardSelected = 3;
-        break;
-      case "cover4":
-        firstCardSelected = 4;
-        break;
-      case "cover5":
-        firstCardSelected = 5;
-        break;
-      case "cover6":
-        firstCardSelected = 6;
-        break;
-      case "cover7":
-        firstCardSelected = 7;
-        break;
-      case "cover8":
-        firstCardSelected = 8;
-        break;
-      case "cover9":
-        firstCardSelected = 9;
-        break;
-      case "cover10":
-        firstCardSelected = 10;
-        break;
-      case "cover11":
-        firstCardSelected = 11;
-        break;
-    }
-    cardTurnNumber = true;
-    this.style.opacity = "0";
-    this.style.pointerEvents = "none";
-  } else {
-    switch (this.id) {
-      case "cover0":
-        secondCardSelected = 0;
-        break;
-      case "cover1":
-        secondCardSelected = 1;
-        break;
-      case "cover2":
-        secondCardSelected = 2;
-        break;
-      case "cover3":
-        secondCardSelected = 3;
-        break;
-      case "cover4":
-        secondCardSelected = 4;
-        break;
-      case "cover5":
-        secondCardSelected = 5;
-        break;
-      case "cover6":
-        secondCardSelected = 6;
-        break;
-      case "cover7":
-        secondCardSelected = 7;
-        break;
-      case "cover8":
-        secondCardSelected = 8;
-        break;
-      case "cover9":
-        secondCardSelected = 9;
-        break;
-      case "cover10":
-        secondCardSelected = 10;
-        break;
-      case "cover11":
-        secondCardSelected = 11;
-        break;
-    }
-    if (
-      cardDeck[firstCardSelected].color === cardDeck[secondCardSelected].color
-    ) {
-      removeCards();
-      flashBackground();
-      addToWonCards();
-    }
-    flipCardBack(this);
-    cardTurnNumber = false;
-  }
-}
 
 function addToWonCards() {
   wonCards.push(cardDeck[firstCardSelected].hex);
@@ -219,36 +151,52 @@ function addToWonCards() {
 }
 
 function flipCardBack(passedThis) {
-  passedThis.style.opacity = "0";
+  passedThis.style.backgroundColor = passedThis.hex;
   for (i = 0; i < 12; i++) {
-    coverArray[i].style.pointerEvents = "none";
+    // coverArray[i].style.pointerEvents = "none";
   }
   setTimeout(function () {
     for (let i = 0; i < 12; i++) {
-      document.querySelector("#cover" + i).style.opacity = 1;
-      if (coverArray[i].className === "grey") {
-        coverArray[i].style.pointerEvents = "auto";
-      }
+      // document.querySelector("#cover" + i).style.opacity = 1;
+      // if (coverArray[i].className === "grey") {
+      // //   coverArray[i].style.pointerEvents = "auto";
+      // }
     }
   }, 500);
 }
 
-function flashBackground() {
-  document.getElementById("game").style.backgroundColor =
-    cardDeck[firstCardSelected].hex;
-  setTimeout(() => {
-    document.getElementById("game").style.backgroundColor = "white";
-  }, 600);
-}
+// function flashBackground() {
+//   document.getElementById("game").style.backgroundColor =
+//     cardDeck[firstCardSelected].hex;
+//   setTimeout(() => {
+//     document.getElementById("game").style.backgroundColor = "white";
+//   }, 600);
+// }
 
-function removeCards() {
+function removeCards(passedCard, secondPassedCard) {
   cardsWon++;
-  coverArray[firstCardSelected].style.display = "none";
-  coverArray[firstCardSelected].style.pointerEvents = "none";
-  cardArray[firstCardSelected].style.opacity = "0";
-  coverArray[secondCardSelected].style.display = "none";
-  coverArray[secondCardSelected].style.pointerEvents = "none";
-  cardArray[secondCardSelected].style.opacity = "0";
+
+  let cardo = passedCard
+
+  console.log("Scab")
+  console.log(passedCard)
+  console.log(secondPassedCard)
+  console.log("Scab")
+  
+  banana.style.opacity = "0";
+  secondPassedCard.style.opacity = "0";
+
+  console.log("aert")
+  console.log(passedCard)
+  console.log(cardo)
+  console.log("aert")
+  
+  // cardArray[firstCardSelected].style.color = "none";
+  // cardArray[firstCardSelected].style.pointerEvents = "none";
+  // // cardArray[firstCardSelected].style.opacity = "0";
+  // cardArray[secondCardSelected].style.display = "none";
+  // cardArray[secondCardSelected].style.pointerEvents = "none";
+  // // cardArray[secondCardSelected].style.opacity = "0";
   if (cardsWon === 6) {
     gameWon();
   }

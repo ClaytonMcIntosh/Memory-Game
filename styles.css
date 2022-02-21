@@ -104,8 +104,8 @@ footer {
 
 .grey {
   background-color: var(--colDarkGrey);
-  padding: -5px;
-  margin: -10px;
+  /* padding: -5px;
+  margin: -10px; */
 }
 
 .green {
