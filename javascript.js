@@ -89,51 +89,47 @@ function dealCards() {
   for (let i = 0; i <= 11; i++) {
     let card = document.createElement("div");
     card.id = `card${i}`;
-    card.hex = `${cardDeck[i].color}`
+    card.hex = `${cardDeck[i].hex}`;
     card.className = "grey";
     gameBoard.appendChild(card);
-    card.addEventListener("click", checkTurnNumber)
+    card.addEventListener("click", checkTurnNumber);
     cardArray.push(card);
   }
 }
 
 function checkTurnNumber() {
   if (cardTurnNumber === false) {
-    firstCardSelected = this.hex
+    firstCardSelected = this.hex;
     firstCardHolder = this;
     cardTurnNumber = true;
     this.style.backgroundColor = this.hex;
     this.style.pointerEvents = "none";
   } else {
-    secondCardSelected = this.hex
+    secondCardSelected = this.hex;
     var secondthis = this;
-    if (
-      firstCardSelected === secondCardSelected
-    ) {
-      removeCards(firstCardHolder, secondthis);
+    if (firstCardSelected === secondCardSelected) {
       flashBackground();
+      removeCards(secondthis);
       addToWonCards();
     }
-    console.log(this);
     flipCardBack(this);
     cardTurnNumber = false;
   }
 }
-
 
 function dealWinningCardsHolder() {
   for (let i = 0; i <= 5; i++) {
     let wonCard = document.createElement("div");
     wonCard.id = `wonCard${i}`;
     wonCard.className = "removedCards";
+    wonCard.style = "black";
     wonCardsSpace.appendChild(wonCard);
     wonCardsArray.push(wonCard);
   }
 }
 
 function addToWonCards() {
-  wonCards.push(cardDeck[firstCardSelected].hex);
-
+  wonCards.push(firstCardSelected);
   for (i = 0; i < wonCards.length; i++) {
     wonCardsArray[i].style.backgroundColor = wonCards[i];
   }
@@ -147,11 +143,16 @@ function flipCardBack(secondcardClicked) {
   setTimeout(function () {
     for (let i = 0; i < 12; i++) {
       document.querySelector("#card" + i).style.backgroundColor = "grey";
-      // if (cardArray[i].className === "grey") {
-  cardArray[i].style.pointerEvents = "auto";
-      //  }
+      if (cardArray[i].style.opacity == "0") {
+      console.log("equal to 1")
+      cardArray[i].style.pointerEvents = "none";
     }
-  }, 500);
+      else {
+        console.log("NOT! equal to 1")
+        cardArray[i].style.pointerEvents = "auto";
+      }
+    }
+   }, 700);
 }
 
 function flashBackground() {
@@ -161,11 +162,10 @@ function flashBackground() {
   }, 600);
 }
 
-function removeCards(passedCard, secondPassedCard) {
+function removeCards(secondPassedCard) {
   cardsWon++;
   firstCardHolder.style.opacity = "0";
   secondPassedCard.style.opacity = "0";
-  console.log(cardsWon)
   if (cardsWon === 6) {
     gameWon();
   }
